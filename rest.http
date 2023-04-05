@@ -1,0 +1,5 @@
+///Account
+###
+GET http://localhost:8080/v1/account
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDJiOGE0ZWJiMmU3YjNmMTVkZmM4YmMiLCJ1c2VyTmFtZSI6InRvYW5oaGcxMjMiLCJyb2xlIjoiYWRtaW4iLCJfX3YiOjAsImlhdCI6MTY4MDU4MTAxNH0.WycCWYEd6u2_QQjUOEvoa6m_WRi1LKiJXVjqFdHbbjY
+
