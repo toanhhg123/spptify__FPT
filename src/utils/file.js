@@ -3,27 +3,29 @@ const path = require("path");
 const formidable = require("formidable");
 
 const { v4 } = require("uuid");
-const uploadFile = async (req) => {
+
+const uploadFile = async (req, fileKey, folder = "public") => {
   return new Promise((resolve, reject) => {
     const form = new formidable.IncomingForm();
+
     form.parse(req, function (err, fields, files) {
-      console.log(files);
-      let oldPath = files.img.filepath;
+      let oldPath = files[fileKey].filepath;
       const fileName =
-        v4() + "." + files.img.originalFilename.split(".").slice(-1);
-      let newPath = path.join(__dirname, "../public", fileName);
+        v4() + "." + files[fileKey].originalFilename.split(".").slice(-1);
+      let newPath = path.join(__dirname, "../public", folder, fileName);
       let rawData = fs.readFileSync(oldPath);
+      console.log(rawData);
       fs.writeFile(newPath, rawData, function (err) {
-        if (err) return reject("upload file faild");
+        if (err) return resolve(null);
         return resolve(fileName);
       });
     });
   });
 };
 
-const deleteFile = (fileName) => {
+const deleteFile = (fileName, folder = "public") => {
   return new Promise((resovle, reject) => {
-    fs.unlink(path.join(__dirname, "../public", fileName), (err) => {
+    fs.unlink(path.join(__dirname, "../public", folder, fileName), (err) => {
       if (err) {
         return resovle(false);
       }

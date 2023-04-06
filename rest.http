@@ -1,5 +1,45 @@
+
 ///Account
 ###
 GET http://localhost:8080/v1/account
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDJiOGE0ZWJiMmU3YjNmMTVkZmM4YmMiLCJ1c2VyTmFtZSI6InRvYW5oaGcxMjMiLCJyb2xlIjoiYWRtaW4iLCJfX3YiOjAsImlhdCI6MTY4MDU4MTAxNH0.WycCWYEd6u2_QQjUOEvoa6m_WRi1LKiJXVjqFdHbbjY
 
+
+
+///category
+###
+GET http://localhost:8080/v1/category
+
+###
+post http://localhost:8080/v1/category
+Content-Type: application/json
+
+{
+    "name": "Rock",
+    "description": "Tận hưởng âm nhạc cực mạnh cung Gen z"
+}
+
+###
+delete http://localhost:8080/v1/category/642e505928426e3c4a528908
+
+###
+PATCH  http://localhost:8080/v1/category/642e5322beff8001c721c5d1
+Content-Type: application/json
+
+{
+    "name": "Tâm trạng",
+    "description": "nhạc tâm trạng phù hợp với giới trẻ, hay"
+}
+
+
+//music
+###
+GET http://localhost:8080/v1/music
+
+###
+POST  http://localhost:8080/v1/music
+Content-Type: multipart/form-data
+
+{
+    ""
+}
