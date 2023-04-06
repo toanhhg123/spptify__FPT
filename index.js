@@ -3,6 +3,7 @@ const app = express();
 const accountRoute = require("./src/routes/accountRoute");
 const authRoute = require("./src/routes/authRoute");
 const musicRoute = require("./src/routes/musicRoute");
+const categoryRoute = require("./src/routes/categoryRoute");
 
 const {
   errorHandler,
@@ -11,7 +12,6 @@ const {
 const authMiddleWare = require("./src/middlewares/authMiddleware");
 var path = require("path");
 require("dotenv").config();
-
 const connectDB = require("./src/config/db");
 const cors = require("cors");
 const bodyParser = require("body-parser");
@@ -20,6 +20,7 @@ app.use(express.static(path.join(__dirname, "src", "public"))); //  "public" off
 
 //middeware header
 app.use(cors());
+app.use(bodyParser.json({ limit: "50mb" }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -30,6 +31,7 @@ connectDB();
 app.use("/v1/account", authMiddleWare(["admin"]), accountRoute);
 app.use("/v1/auth", authRoute);
 app.use("/v1/music", musicRoute);
+app.use("/v1/category", categoryRoute);
 
 //error middleware
 app.use(handleErrorNotFound);
